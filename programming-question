@@ -1,1 +1,32 @@
+Prime-Number:
 
+    internal class primenumber
+    {
+        public void primeNumber()
+        {
+            Console.WriteLine("please enter your desired maximum prime number:");
+            int maxNumber = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("prime numer is"+maxNumber);
+
+            bool isPrime = true;
+
+            for (int i = 2; i <= maxNumber; i++)
+            {
+
+                for (int j = 2; j <= maxNumber; j++)
+                {
+                    if (i != j && i % 2 == 0)
+                    {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                if (isPrime)
+                {
+                    Console.WriteLine(i);
+                }
+                isPrime = true;
+            }
+        }
+    }
+================================================================================================================================================
