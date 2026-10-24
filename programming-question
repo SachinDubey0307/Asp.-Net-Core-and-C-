@@ -1,4 +1,4 @@
-Prime-Number:
+Question: Prime-Number:
 
     internal class primenumber
     {
@@ -30,3 +30,81 @@ Prime-Number:
         }
     }
 ================================================================================================================================================
+
+Question: Reverse the String
+
+internal class reverseString
+{
+    public void reverseTheString() 
+    {
+        Console.WriteLine("Enter a string to reverse:");
+        string input = Console.ReadLine();
+        char[] charArray = input.ToCharArray();
+        Array.Reverse(charArray);
+        string reversedString = new string(charArray);
+        Console.WriteLine(reversedString);
+    }
+
+}
+
+OR
+
+internal class reverseString
+{
+    string  sourceString,reverseStringg;
+    public void reverseTheString() 
+    {
+        Console.WriteLine("Enter a string to reverse:");
+        sourceString = Console.ReadLine();
+        for ( int i = sourceString.Length - 1;i>=0; i--)
+        {
+            reverseStringg = reverseStringg + sourceString[i];
+        }
+        Console.WriteLine("the source string is:{0} \n ReverseSting is: {1}",sourceString ,reverseStringg);
+    }
+
+}
+
+============================================================================================================================================
+
+Question: Reverse The Number
+ internal class reverseTheNumber
+ {
+     int nsourceString, nreversedString;
+         
+     public void reversetheNumber()
+     {
+         Console.WriteLine("Enter a number to reverse: ");
+         nsourceString = Convert.ToInt32(Console.ReadLine());
+         while (nsourceString != 0) 
+         {
+             nreversedString = nreversedString * 10;
+             nreversedString = nreversedString + nsourceString % 10;
+             nsourceString = nsourceString / 10;
+         }
+         Console.WriteLine("the revese string result is:"+nreversedString);
+     }
+ }
+
+========================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
