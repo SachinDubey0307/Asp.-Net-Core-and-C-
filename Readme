@@ -53,6 +53,116 @@ ans:
 8. Operator Overloading means help to redifine  additional functinalities for plus,minus, multi, addtion.
  Custom operator overloding: need operator keyword
 
+9. why do we need Abstract classes ?
+ans: Abstract class is half defined or partially defined parent class. (example customer, glod and silver)
+   - some implementation in parent class and some left for child class for implementation.
+   - Because its half defined you cant create instance of it ( Note: also interface)
+    example:
+   - Are Abstract class is vitual?
+      yes
+
+public abstract class Customer
+{
+    public string name { get; set; }
+    public string address { get; set; }
+    public string product... { get; set; }                                  
+    public decimal productAmount { get; set; }
+
+    public abstract decimal CalculateDiscount();                                               (HALF Defined) 
+}
+
+public class GoldCustomer : customer
+{
+  public overide decimal CalculateDiscount (){
+      return productAmount-10;
+  }
+}
+
+public class SilverCustomer : customer
+{
+  public overide decimal CalculateDiscount (){
+      return productAmount-10;
+  }
+}
+
+
+
+
+10. Interface: interface is a contract.
+- Interface is a contract, by having contract we have better control on impact analysis, change management and breaking changes.
+- Multiple inheritance helps to add new methods without affecting the old interfaces.
+ "Interface segregation priciple also say that client dont to force unnecessary method to use so we use multiple inheritance to avoid it."
+- its legal binding developer who created the class and consumer who is using the class.
+- all the method and fuction in interface is by default public. and its pure signature , not have any logic.
+- interface implement that class, that promise to implement all interface properties and fuction. 
+- NOTE: if you want to change interface, you can use multiple inharitance. this will help to not effect old logic and crete new logic 
+  as per requirement.
+
+
+Example:
+public interface ICustomer
+{
+    string name { get; set; }
+    string address { get; set; }
+    string productName { get; set; }
+    decimal productAmount { get; set; }
+
+    decimal CalculateDiscount();
+}
+public abstract class Customer : ICustomer
+{
+    public string name { get; set; }
+    public string address { get; set; }
+    public string productName { get; set; }
+    public decimal productAmount { get; set; }
+
+    public abstract decimal CalculateDiscount();
+}
+public class GoldCustomer : customer
+{
+  public overide decimal CalculateDiscount (){
+      return productAmount-10;
+  }
+}
+
+public class SilverCustomer : customer
+{
+  public overide decimal CalculateDiscount (){
+      return productAmount-10;
+  }
+}
+
+static void Main(string[] args)
+{
+    ICustomer x = new GoldCustomer();
+    x.name = "sss";
+    x.productAmount = 100;
+    x.CalculateDiscount();
+
+    ICustomer x1 = new GoldCustomer();
+    x1.CalculateDiscount();
+    Console.WriteLine("Hello World!");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
