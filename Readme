@@ -1,1 +1,58 @@
+====================================== Object Oriented Programming Interview quesiton =============
+
+
+1. Class and object:
+
+  Class is a type and blue-print and for using the class you need to create instance or object (Object is instance of class)
+
+2. Abstraction and Encapsulation
+
+Abstraction: show only what is necessary
+- Abstraction is Disign thought process and its happen during design phase (making model design time by access modifier)
+- Abstraction happen during design phase , inwhich so decide what shown or what not shown public by access modifier.
+- 
+
+Encapsulation: Hide complexity
+
+- During Execution or coding phase  devloper need more function to complete the abstraction and design so they create more fuction.so at that
+  he create more fuction and seprate them by access modifier.
+- During Execution phase developer use encapsulation means public and private access modifier to show what public and what private. that implement
+the thought process of abstraction.
+- Encapsulaation implement Abstraction.
+
+
+3. Inheritance: (Is A Relationship)
+-  Inheritance defines parent and child relationship 
+
+
+4. Explain Virtual Keyword and Overriding.
+- Virtual keywork help us to define some logic in parent class that could be overriding and use by child class
+- you have to put virtual keyword in your parent properties and fuction that you can override by 'override' keyword with your own logic.
+- 
+
+5. Explain Overloading.
+- Same Method name with different signature.
+
+6. Different between Overloading and Overridding.
+- OverLoading: same method name with different signature.
+- Overridding: using vitual keyword and override by child class. there should be a parent and child relationship
+
+7. Explain Ploymorphism?
+ans: 
+ - ploy- many and morphism- change as per situation means its ability of object to act diffrently under diffrent condition.
+ -  ploymorhism can't implemant without parent and child relationship
+
+       Static Polymorphism                                               Dynamic Ploymorphism
+          (Compile time)                                                      (Runtime) 
+                                  
+   - Static (Compile time) polymorphism imeplement          - Dynamic (Runtime) polymorphism imeplement by
+        by  overloading                                         overriding
+   -                                                        - Happen in parent child relationship
+                                                            - use virtual keyword
+
+8. Operator Overloading means help to redifine  additional functinalities for plus,minus, multi, addtion.
+ Custom operator overloding: need operator keyword
+
+
+
 
