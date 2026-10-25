@@ -128,7 +128,80 @@ Answer:
 
 
 
+==============================================================================================================================================
 
+Question: 2nd largest number from array - code
+
+using System.Linq;
+
+public static int GetSecondLargestLinq(int[] arr)
+{
+    // Distinct() removes duplicates
+    // OrderByDescending() puts the largest at the top
+    // Skip(1) skips the first (largest) element
+    // FirstOrDefault() grabs the next one
+    return arr.Distinct().OrderByDescending(x => x).Skip(1).FirstOrDefault();
+}
+
+or
+
+using System;
+
+public static int GetSecondLargestBySorting(int[] arr)
+{
+    if (arr == null || arr.Length < 2)
+        throw new ArgumentException("Need at least 2 elements");
+
+    // Sort the array in ascending order (Smallest to Largest)
+    Array.Sort(arr);
+
+    // The largest is at arr.Length - 1
+    // The second largest is at arr.Length - 2
+    return arr[arr.Length - 2];
+}
+
+==========================================================================================================================================
+
+Question:  Given a table with id, name,dept ,salary. Find the highest salary in each department
+
+SELECT dept, MAX(salary) AS HighestSalary
+FROM Employees
+GROUP BY dept;
+
+OR
+
+SELECT e1.id, e1.name, e1.dept, e1.salary
+FROM Employees e1
+WHERE e1.salary = (
+    SELECT MAX(e2.salary)
+    FROM Employees e2
+    WHERE e2.dept = e1.dept
+);
+
+============================================================================================================================================
+
+question: Given a string input . Display the occurrence of each characters
+    Input: "teams meeting"
+  Output : t-2, e-3, a-1,m-2
+
+Answer:
+using System;
+using System.Linq;
+
+public class Program
+{
+    public static void Main()
+    {
+        string input = "teams meeting";
+        
+        var result = input.ToLower()
+                          .Where(c => c != ' ') // Ignore spaces
+                          .GroupBy(c => c)
+                          .Select(g => $"{g.Key}-{g.Count()}");
+                          
+        Console.WriteLine(string.Join(", ", result));
+    }
+}
 
 
 
