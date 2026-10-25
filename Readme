@@ -1,3 +1,33 @@
+================================================ C# and Asp.net core MVC and API ===============================
+
+IEnumerable vs IQueryable C#:
+- Both are Interface for .Net collection and IQueryble inherites from IEnumerable means whatever things IEnumerable do
+that IQueryble also do. but somethings that Iquerable do but IEnumerable not.
+- If Use IEnumerable its fetch and give all the data from the table to the client. then the filter is getting applied.
+  means when use IEnumerable and apply filter on it . The full data go from sql server to the clientside then the filter is applied.
+- IQuerable sent only required record to client. after apply filter.
+- IEnumerable filter logic executed on client side, and IQueryble filter logic executed on DB Side by using sql.
+- IEnumerable is in-memory collection and IQueryabl is collection connected to DB via EF or Linq. 
+- If you working in-memory collection that no connection to RDBMS then better to use IEnumerable.
+       And
+  when working to collection that connected to DB thend IQuerable is use, because it reduce network traffic.and also utilse the power of SQL
+
+
+example: 
+static void Main(string[] args)
+{
+    Test123Entities dal = new Test123Entities();
+    IEnumerable<Employee> ob = dal.Employees;  // EF loading empolyee table
+    IEnumerable<Employee> d = ob.Where(x => x.Empid == 2).ToList<Employee>();// filter
+}
+
+
+
+
+
+
+
+
 ====================================== Object Oriented Programming Interview quesiton =============
 
 
