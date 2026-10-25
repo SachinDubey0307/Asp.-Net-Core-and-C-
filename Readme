@@ -1,4 +1,14 @@
 ================================================ C# and Asp.net core MVC and API ===============================
+
+
+
+
+
+
+
+
+
+
 Question: IEnumerable vs IQueryable C#:
 Answer:
 - Both are Interface for .Net collection and IQueryble inherites from IEnumerable means whatever things IEnumerable do
@@ -96,7 +106,13 @@ However, if you use Task.Run(() => DoHeavyMath()), you are telling C# to take a 
 
 Question: What is dependency injection and difference between singleton,scope and transient
 
-Answer:
+Answer: DI is a practice of providing Dependent objects from outside rather that the class creating using the NEW keyword.
+        providing from outside by constractor or properties
+      - By delegating object creation outside the caller we have better decoupled system.
+        Change at one place and the changes are reflected across the application seamlessly.
+
+      - Implementation of Dependancy Injection is: 
+        To implement DI we need to use provide DI objects in ConfigureServices Method using Scoped,Singleton or Transient. 
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------
@@ -115,6 +131,17 @@ The Airport Analogy
   If you aren't taking a flight (e.g., you just came to the airport to pick someone up), you never see the gate agent.
 
 1. Middleware
+  Middleware is helps to execute pre-processing logic in MVC architecture means when you look,
+  MiddleWare helps to execute pre-processing logic before controller is executed.
+--- Middleware Implementation in MVC Core:
+   1. Need to add Middleware Template or class( Normally middleware use for Authentication and Authorization.)
+   2. In Middleware class we have 'invoke method' inwhich you write your precrossing logic.
+   3. To put this middleware into your pipeline, go configure method (in programe.cs or startup class)
+      app.usemiddleware<CustomAuthentication>
+   
+
+
+
   Middleware is a chain of components that form the request pipeline. Every request passes through them in the order they are registered.
 
 Scope: Global (Application level). 
