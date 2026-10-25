@@ -35,6 +35,12 @@
 
            // View
          @ViewBag.Name
+
+. API (Application Programming Interface) is a set of rules that lets one software application talk to another and exchange data or functionality.
+
+Example: A weather app asks a weather service for today’s temperature, and the service sends it back.
+
+REST API (Representational State Transfer) is a type of API that uses standard HTTP methods (GET, POST, PUT, DELETE) to work with resources through URLs, and usually returns data in JSON.
  
 
 
