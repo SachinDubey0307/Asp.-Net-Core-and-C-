@@ -21,8 +21,9 @@ static void Main(string[] args)
     IEnumerable<Employee> d = ob.Where(x => x.Empid == 2).ToList<Employee>();// filter
 }
 
-
+---------------------------------------------------------------------------------------------------------------------------------------------
 QUESTION: Async vs Thread:
+
 Answer: 'Asynchronous programming' is a way to write code that allows your program to start a long-running task 
 (like downloading a file or querying a database) and move on to other work without waiting for that task to finish. 
  When the task is done, the program comes back to it.
@@ -38,6 +39,64 @@ you go get your coffee. (Your app stays responsive).
 How it looks in C#:
 You use two keywords: async and await, and typically return a Task or Task<T>.
 
+
+. Threads are about doing multiple things at once. Async is about managing waiting efficiently.
+
+Here is the breakdown of the two concepts:
+
+1. Thread (The Worker)
+A thread is an actual, physical (at the OS level) worker. It is a unit of execution.
+
+What it does: It executes code. If you have multiple CPU cores, multiple threads can run code at the exact same time (Parallelism).
+
+Cost: Threads are expensive. Creating a thread takes memory (about 1MB of stack space) and CPU time for the OS to manage it (context switching).
+
+Best for: CPU-bound work. Tasks that require heavy calculation and keep the processor busy (e.g., calculating prime numbers, 
+rendering 3D graphics, processing a huge image).
+
+Analogy: Hiring a second barista. Now two people can physically make coffee at the same time.
+
+2. Async (The Manager)
+Async (using async/await) is a programming pattern. It is a way to write code so that your app doesn't freeze while waiting for 
+something slow to happen.
+
+What it does: It allows a single thread to start a slow task (like waiting for a database or downloading a file), pause that task,
+go do other work, and come back when the task is done. It does not necessarily create a new thread.
+
+Cost: Async is cheap. It doesn't require a dedicated OS thread while waiting. It just uses a state machine in memory.
+
+Best for: I/O-bound work. Tasks where your app is just waiting for something else (e.g., network calls, reading a file, querying a database).
+
+Analogy: The barista puts the cup under the machine, starts the brew, and walks away to take another order. When the coffee is done, 
+they come back. You don't need to hire a new barista; you just work more efficiently.
+
+## Side-by-Side Comparison
+
+Side-by-Side Comparison
+Feature                     	Thread (Multithreading)	                                         Async / Await (Asynchronous)
+
+Core Idea	                   Doing multiple things at the exact same time.	              Not blocking the main flow while waiting.
+
+Resource Cost                High (Creates a new OS-level worker).	                      Low (Uses existing threads efficiently).
+
+Best For	                   CPU-bound tasks (number crunching).                        	I/O-bound tasks (network, disk, database).
+
+Scale	                       Hard to scale to thousands of threads.	                      Can scale to tens of thousands of async tasks easily.
+
+C# Syntax                    Thread t = new Thread(DoWork);                               await DoWorkAsync();
+
+The Big Misconception
+Many people think async means "runs on a background thread." This is false.
+
+If you have an async method doing a database query, the thread that called it is freed up to go handle a user clicking a button on the UI, or handle another web request. It doesn't sit there blocked.
+
+However, if you use Task.Run(() => DoHeavyMath()), you are telling C# to take a thread from the Thread Pool to run that CPU-heavy code off the main thread.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question: What is dependency injection and difference between singleton,scope and transient
+
+Answer:
 
 
 
