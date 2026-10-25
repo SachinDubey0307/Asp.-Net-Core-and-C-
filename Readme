@@ -1,6 +1,8 @@
 ================================================ C# and Asp.net core MVC and API ===============================
 
-
+. Startup.cs or programe.cs  helps to configure Dependency Injection and MiddleWare.
+  - In ConfigureServices we configure DI
+  - In Configure we add Middlewares.
 
 
 
@@ -113,6 +115,10 @@ Answer: DI is a practice of providing Dependent objects from outside rather that
 
       - Implementation of Dependancy Injection is: 
         To implement DI we need to use provide DI objects in ConfigureServices Method using Scoped,Singleton or Transient. 
+        1. AddScope: Intantiate once per request made to the server
+                     Intantiate object per request. Every request single instance created , fresh instance created
+        2. AddTrasient: Intantiate every singletime service is injected 
+        3. Singleton: Intanciate once in an application life cycle 
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------
