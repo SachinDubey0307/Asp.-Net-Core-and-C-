@@ -133,30 +133,39 @@ Answer:
 Question: 2nd largest number from array - code
 
 using System;
-using System.Linq;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Channels;
+using System.Transactions;
 
-class Program
+namespace ConsoleApp1
 {
-    public static int GetSecondLargestLinq(int[] arr)
+    internal class secondLargeArrClass
     {
-        // Distinct() removes duplicates
-        // OrderByDescending() puts the largest at the top
-        // Skip(1) skips the first (largest) element
-        // FirstOrDefault() grabs the next one
-        return arr.Distinct().OrderByDescending(x => x).Skip(1).FirstOrDefault();
-    }
+        public static int GetSecondLargestLinq(int[] arr)
+        {
+            // Distinct() removes duplicates
+            // OrderByDescending() puts the largest at the top
+            // Skip(1) skips the first (largest) element
+            // FirstOrDefault() grabs the next one
+            return arr.Distinct().OrderByDescending(x => x).Skip(1).FirstOrDefault();
+        }
 
-    static void Main()
-    {
-        int[] numbers = { 10, 45, 20, 45, 8, 33 };
-
-        int secondLargest = GetSecondLargestLinq(numbers);
-
-        Console.WriteLine("Array: " + string.Join(", ", numbers));
-        Console.WriteLine("Second largest: " + secondLargest);
     }
 }
 
+using ConsoleApp1;
+
+int[] numbers = { 10, 45, 20, 45, 8, 33 };
+
+int secondLargest = secondLargeArrClass.GetSecondLargestLinq(numbers);
+
+Console.WriteLine("Array: " + string.Join(", ", numbers));
+Console.WriteLine("Second largest: " + secondLargest);
+
+
+   
 or
 
 using System;
