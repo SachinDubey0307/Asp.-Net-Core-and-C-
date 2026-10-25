@@ -99,10 +99,67 @@ Question: What is dependency injection and difference between singleton,scope an
 Answer:
 
 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Question: Middleware and filter difference
+answar: 
+The Big Picture
+. Middleware is the outer shell of your application. It handles every single request that comes into your server.
 
+. Filters are the inner workers. They only run when a request successfully reaches an MVC Controller or Web API Action.
 
+The Airport Analogy
+. Middleware is like the Airport Security & Baggage Check. Everyone who enters the airport must go through it. 
+   It doesn't matter what airline you are flying or where you are going.
 
+. Filters are like the Gate Agent. They only check you right before you board your specific flight (the Controller/Action). 
+  If you aren't taking a flight (e.g., you just came to the airport to pick someone up), you never see the gate agent.
 
+1. Middleware
+  Middleware is a chain of components that form the request pipeline. Every request passes through them in the order they are registered.
+
+Scope: Global (Application level). 
+ Context: Has access to HttpContext (Headers, Cookies, raw Request/Response body). 
+ When it runs: Very early. Before ASP.NET Core even knows which Controller or Action will handle the request.
+ What it can do: Modify headers, log raw requests, handle CORS, serve static files, or completely short-circuit the request (e.g., return a 401 Unauthorized and stop).
+ Use Cases: Global Exception Handling, CORS, Authentication (setting the User identity), Static File Serving, Rate Limiting.
+
+2. Filters
+Filters are attributes or classes that run inside the MVC/Web API pipeline. They wrap around the execution of a specific action method.
+
+Scope: MVC/Controller/Action level (can be applied globally to all controllers, to a specific controller, or to a single action).
+Context: Has access to ActionExecutingContext / ActionExecutedContext. It knows about the Action Arguments, Model State, and the specific Controller/Action being executed.
+When it runs: Later. After routing has happened and the framework has selected the Controller and Action.
+What it can do: Modify the model before it enters the action, short-circuit the action (e.g., if validation fails), or modify the result after the action finishes
+
+========= Types of Filters:
+
+. Authorization Filters: Run first (e.g., [Authorize]).
+
+. Resource Filters: Run after authorization, before model binding.
+
+. Action Filters: Run before and after the action method (great for logging).
+
+. Exception Filters: Catch errors thrown in the action.
+
+. Result Filters: Run before and after the result is formatted (e.g., JSON).
+
+Key Differences (Side-by-Side)
+
+Feature	                                Middleware	                                                  Filters
+Level                         	  Application level	                                             MVC / Controller / Action level
+. Runs for static files?	        Yes (e.g., .css, .jpg, .html)	                                 No (Only runs for MVC endpoints)
+. Access to Route Data?	          Limited (Routing middleware handles this)	                     Yes (Knows exactly which Controller/Action is executing)
+. Access to Model/Action          No                                                             Yes
+   Arguments?	          
+. Execution Order	               Registered in Program.cs. Runs outside-in.                    	Runs inside MVC. Order is strictly defined
+                                                                                               (Auth -> Resource -> Action -> Exception -> Result).
+. Typical Use Case	             Global CORS, HSTS, Static Files, Authentication              	Model validation, Action logging, modifying JSON output
+
+=== Summary Rule of Thumb
+- If you need to do something to every single request (even requests for images or text files) -> Use Middleware.
+
+- If you need to do something specifically related to your Controller's logic 
+(like checking if a user's input is valid before running the action) -> Use a Filter.
 
 
 ====================================== Object Oriented Programming Interview quesiton =============
@@ -252,6 +309,12 @@ static void Main(string[] args)
 }
 
 
+
+===========================================================================================================================================
+=========================================================== Solid principles ==============================================================
+
+
+ 
 
 
 
