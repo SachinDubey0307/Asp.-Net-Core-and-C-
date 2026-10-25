@@ -161,6 +161,153 @@ Level                         	  Application level	                             
 - If you need to do something specifically related to your Controller's logic 
 (like checking if a user's input is valid before running the action) -> Use a Filter.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question: Overload and override
+Answer:
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question: Design Pattern
+1. Dependency Injection (DI) Pattern
+2. Repository Pattern
+
+3. Builder Pattern
+Category: Creational
+What it is: Used to construct complex objects step-by-step. It separates the construction of an object from its representation.
+Why it's used: When an object has many optional parameters, constructors become messy. The Builder pattern makes it readable.
+How it's implemented in ASP.NET Core:
+You use this every single time you start an ASP.NET Core app! Look at your Program.cs:
+
+4. Chain of Responsibility Pattern (Middleware)
+Category: Behavioral
+What it is: A chain of handler objects. A request is passed along the chain. Each handler decides either to process the request or pass it to the next handler.
+
+Why it's used: It decouples the sender of a request from its receivers.
+
+How it's implemented in ASP.NET Core:
+The entire Middleware pipeline is the Chain of Responsibility pattern.
+
+
+============= Summary of what a typical project uses:
+- DI to wire everything together.
+
+- Repository to hide Entity Framework from the controllers.
+
+- Builder (via WebApplication.CreateBuilder) to configure the app.
+
+- Chain of Responsibility (via Middleware) to process HTTP requests.
+
+- Singleton (via AddSingleton) for caching or app-wide configuration settings.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+Question: Map , run , use difference
+In ASP.NET Core, app.Use(), app.Run(), and app.Map() are the three fundamental methods used to configure the middleware pipeline.
+You can think of the pipeline as a series of gates that every HTTP request must pass through. 
+Each method serves a distinct purpose in how a request flows through these gates.
+
+⚙️ app.Use(): The Chain Builder
+app.Use() is used to add a middleware component that can perform some logic and then choose whether to pass the request
+to the next middleware in the pipeline.
+
+Core Characteristic: It "chains" the pipeline. It receives a next parameter, which represents the subsequent delegate.
+
+Behavior: You can execute code both before and after calling next().
+
+Short-Circuiting: If you do not call next(), the request stops there, and no further middleware is executed.
+
+Use Case: This is the most flexible method, used for cross-cutting concerns like logging, authentication, 
+and custom request processing where you might want to pass the request along.
+
+
+🛑 app.Run(): The Terminator
+app.Run() adds a terminal middleware. It is the end of the line.
+
+Core Characteristic: It does not have a next parameter.
+
+Behavior: It processes the request and generates a response, completely stopping the pipeline. Any middleware registered after a Run delegate will never be executed.
+
+Convention: Run is a convention used for the final piece of logic in your pipeline. Typically, an application will have only one Run method, placed at the very end.
+
+Use Case: It's perfect for a "catch-all" or fallback handler when no other middleware or endpoint has handled the request.
+
+
+🌿 app.Map(): The Branch Router
+app.Map() is used to create a branch in the pipeline based on the request's path.
+
+Core Characteristic: It conditionally branches the pipeline. If the incoming request path starts with the specified path,
+a separate, isolated pipeline is executed.
+
+Behavior: The branching is based on path matching. It's not a middleware that gets added to the main chain but rather a fork in the road.
+
+Path Modification: When Map is used, the matched path segment is removed from HttpRequest.Path and added to HttpRequest.PathBase.
+
+Use Case: It's ideal for isolating specific parts of your application, such as handling requests for /api or /admin differently, or for setting up separate health check endpoints.
+
+
+
+💡 Bonus: UseMiddleware<T>() and MapWhen()
+You may also encounter two related methods:
+
+app.UseMiddleware<MyMiddleware>(): This is the strongly-typed, convention-based way to add a custom middleware class. 
+It offers full Dependency Injection (DI) support in the middleware's constructor, making it the preferred approach for complex, 
+reusable middleware components.
+
+app.MapWhen(): This is a more powerful version of Map. Instead of matching on a URL path, 
+it branches the pipeline based on the result of a predicate (e.g., checking for a specific header, query string, or any other logic).
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Question: How to optimize api call if it is taking too much time.
+Answer:
+🔍 Step 0: Measure First (Don't Guess)
+Before changing code, find out where the time is going. Is it the database, the network, serialization, or your own C# logic?
+
+Enable EF Core Logging: Log the generated SQL to spot inefficient queries or the dreaded N+1 problem.
+
+Use a Profiler: Tools like MiniProfiler, or built-in .NET diagnostics, help you see a timeline of exactly what is slow within a request.
+
+Check the Obvious: Ensure you are not accidentally running a massive query, doing a synchronous call, or missing an index.
+
+⚡ 1. Asynchronous & Threading (The Biggest Quick Win)
+💾 2. Database & EF Core Optimization
+🚀 3. Caching (Reduce the Work)
+📦 4. Payload & Network Optimization
+⚙️ 5. Middleware & Pipeline
+🏗️ 6. Advanced Patterns (For Complex Scenarios)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ====================================== Object Oriented Programming Interview quesiton =============
 
