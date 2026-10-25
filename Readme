@@ -1,6 +1,6 @@
 ================================================ C# and Asp.net core MVC and API ===============================
-
-IEnumerable vs IQueryable C#:
+Question: IEnumerable vs IQueryable C#:
+Answer:
 - Both are Interface for .Net collection and IQueryble inherites from IEnumerable means whatever things IEnumerable do
 that IQueryble also do. but somethings that Iquerable do but IEnumerable not.
 - If Use IEnumerable its fetch and give all the data from the table to the client. then the filter is getting applied.
@@ -20,6 +20,24 @@ static void Main(string[] args)
     IEnumerable<Employee> ob = dal.Employees;  // EF loading empolyee table
     IEnumerable<Employee> d = ob.Where(x => x.Empid == 2).ToList<Employee>();// filter
 }
+
+
+QUESTION: Async vs Thread:
+Answer: 'Asynchronous programming' is a way to write code that allows your program to start a long-running task 
+(like downloading a file or querying a database) and move on to other work without waiting for that task to finish. 
+ When the task is done, the program comes back to it.
+
+The Coffee Shop Analogy:
+
+Synchronous (Normal): You order a coffee and stand at the counter, doing absolutely nothing, until the barista hands it to you. 
+(Your app is frozen).
+
+Asynchronous: You order a coffee, get a buzzer, and go sit down to check your phone or read a book. When the buzzer goes off,
+you go get your coffee. (Your app stays responsive).
+
+How it looks in C#:
+You use two keywords: async and await, and typically return a Task or Task<T>.
+
 
 
 
