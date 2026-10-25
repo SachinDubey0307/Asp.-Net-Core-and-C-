@@ -3,7 +3,39 @@
 . Startup.cs or programe.cs  helps to configure Dependency Injection and MiddleWare.
   - In ConfigureServices we configure DI
   - In Configure we add Middlewares.
+. Cookies: Cookies is text file , an small piece of file that keep info at end user system.
+. session: Session management means keeping a user’s data between HTTP requests, because HTTP is stateless and forgets everything after each request.
+  HTTP is Stateless Protocal so maintain state we use session
 
+  Type of Session: 
+   1. Session: stores data on the server for each user.
+         HttpContext.Session.SetString("User", "Sachin");
+         var user = HttpContext.Session.GetString("User");
+
+   2.Cookies: stores small data in the user’s browser. 
+        Response.Cookies.Append("User", "Sachin");
+        var user = Request.Cookies["User"];
+
+   3. TempData: keeps data for the next request only, like after a redirect.
+               stores data until it is read, so it survives a redirect. It is useful for messages like “Saved successfully”.
+           TempData["Msg"] = "Saved!";
+           return RedirectToAction("Index");
+
+  4. ViewData: a dictionary that uses string keys. It needs type casting in the view and lasts only for the current request.
+            // Controller
+             ViewData["Name"] = "Sachin";
+
+             // View
+            @ViewData["Name"]
+
+  5. ViewBag: a dynamic wrapper over ViewData. It uses property syntax, so there’s no casting and no string keys. 
+      It also lasts only for the current request.
+           // Controller
+          ViewBag.Name = "Sachin";
+
+           // View
+         @ViewBag.Name
+ 
 
 
 
