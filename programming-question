@@ -1,3 +1,48 @@
+/*
+ Factorial means to multiply a series of descending natural numbers.
+
+ Fact : Zero factoril is 1
+
+ Examples are :
+
+ 1 factorial = 1 * 1 = 1
+ 2 factorial = 2 * 1 = 2
+ 3 factorial = 3 * 2 * 1 = 6
+ 4 factorial = 4 * 3 * 2 * 1 = 24
+ 5 factorial = 5 * 4 * 3 * 2 * 1 = 120
+ */
+Question: Factorial Logic
+Answer:
+internal class factorialLogicClass
+{
+    int number, factoral = 1;
+    public void factorialLogicClassMethod  ()
+    {
+        Console.WriteLine("Factorial logic goes here:");
+         number = int.Parse(Console.ReadLine());
+
+        if (number<0) 
+        {
+            Console.WriteLine("Factorials are not applicable for negative numbers.");
+        }
+        else if(number ==0)   
+        {
+           Console.WriteLine("Factorials are not applicable for negative numbers.");
+        }
+        else
+        {
+            for (int i = number; i >= 1; i--)
+            {
+                factoral = factoral * i;
+            }
+            Console.WriteLine("{0} factoral is {1}", number.ToString(), factoral.ToString());
+
+        }
+
+    }
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
 Question: Swap the Number
 answer:
  internal class SwapTwoNumberClass
