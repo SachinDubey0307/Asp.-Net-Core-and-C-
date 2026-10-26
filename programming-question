@@ -1,3 +1,39 @@
+Question: sort the Array in Asecending order:
+Answer: 
+    internal class arrayinAscendingorderClass
+    {
+        public void arrayinAscendingorder()
+        {
+            int[] unorderedNumber = { 30,10,-90,-40,50 ,25,70,-54,-80,38};
+            Array.Sort(unorderedNumber);
+            foreach (int i in unorderedNumber)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+    }
+}
+---------------------------------------------------------------------------------------------------------------------------------------------
+Question: Sort the Array in Decending order:
+Answer:
+internal class arrayinAscendingorderClass
+{
+    public void arrayinAscendingorder()
+    {
+        int[] unorderedNumber = { 30,10,-90,-40,50 ,25,70,-54,-80,38};
+        Array.Sort(unorderedNumber);
+        Array.Reverse(unorderedNumber);
+        foreach (int i in unorderedNumber)
+        {
+            Console.WriteLine(i);
+        }
+    }
+
+}
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
 Question: Prime-Number:
 
     internal class primenumber
