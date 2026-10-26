@@ -1,3 +1,22 @@
+Question: Swap the Number
+answer:
+ internal class SwapTwoNumberClass
+ {
+     public void SwapTwoNumberClassMethod()
+     {
+
+         int a = 50;
+         int b = 1000;
+         a = a + b;
+         b = a - b;
+         a = a - b;
+         Console.WriteLine(a);
+         Console.WriteLine(b);
+
+     }
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
 Question: Palindrome String Programme: (Palindrome sting is : RADAR,CIVIC,LEVEL)
 Answer:
  public void palindromeStringMethod()
