@@ -397,6 +397,34 @@ public class Program
     }
 }
 
+--------------------------------------------------------------------------------------------------------------------------------------------
+Question: Find Even Or Odd Number
+Answer:
+/*
+ Even number : divisible by 2 (remainder is 0).
+ Odd number  : not divisible by 2 (remainder is 1).
+
+ Examples are :
+
+ 4 % 2 = 0  -> Even
+ 7 % 2 = 1  -> Odd
+ 0 % 2 = 0  -> Even
+ */
+
+int number;
+
+Console.Write("Please enter a number : ");
+number = int.Parse(Console.ReadLine());
+
+if (number % 2 == 0)
+{
+    Console.WriteLine("{0} is an Even number", number);
+}
+else
+{
+    Console.WriteLine("{0} is an Odd number", number);
+}
+
 
 
 
