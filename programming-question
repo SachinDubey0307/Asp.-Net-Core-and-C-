@@ -1,3 +1,37 @@
+Queastion: Fibonacci Series
+Answer:
+/*
+ Fibonacci series: each number is the sum of the previous two numbers.
+ It starts with 0 and 1.
+
+ Examples are :
+
+ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34 ...
+ */
+
+int number, first = 0, second = 1, next, i;
+
+Console.Write("Please enter how many terms to print : ");
+number = int.Parse(Console.ReadLine());
+
+if (number <= 0)
+{
+    Console.WriteLine("Please enter a number greater than 0.");
+}
+else
+{
+    Console.WriteLine("Fibonacci series :");
+
+    for (i = 1; i <= number; i++)
+    {
+        Console.Write(first + " ");
+
+        next = first + second;
+        first = second;
+        second = next;
+    }
+}
+----------------------------------------------------------------------------------------------------------------------------------------------
 /*
  Factorial means to multiply a series of descending natural numbers.
 
