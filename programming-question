@@ -1,3 +1,40 @@
+Question: Palindrome String Programme: (Palindrome sting is : RADAR,CIVIC,LEVEL)
+Answer:
+ public void palindromeStringMethod()
+ {
+
+     Console.WriteLine("Enter the string to verify its palindrome property:");
+     string input = Console.ReadLine();
+     char[] charArray = input.ToCharArray();
+     Array.Reverse(charArray);
+     string reversedString = new string(charArray);
+     if (input.Equals(reversedString))
+     {
+         Console.WriteLine("its palindrome sting");
+     }
+     else
+     {
+         Console.WriteLine("its not a palindrome string");
+     }
+
+ }
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Question: Can we stored diffrent type of data in Array?
+Answer: yes , by object type array (Object typt is parent type )
+public void arrayinAscendingorder()
+{
+    object[] unorderedNumber = new object[10];
+            unorderedNumber[0] = 5;
+            unorderedNumber[1] = "sachin dubey";
+            unorderedNumber[2] = 3.90898;
+            unorderedNumber[3] = true;
+
+    foreach (var item in unorderedNumber)
+    {
+        Console.WriteLine(item);
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------
 Question: sort the Array in Asecending order:
 Answer: 
     internal class arrayinAscendingorderClass
