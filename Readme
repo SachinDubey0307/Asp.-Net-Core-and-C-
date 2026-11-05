@@ -41,6 +41,11 @@
 Example: A weather app asks a weather service for today’s temperature, and the service sends it back.
 
 REST API (Representational State Transfer) is a type of API that uses standard HTTP methods (GET, POST, PUT, DELETE) to work with resources through URLs, and usually returns data in JSON.
+REST represents Representational State Transfer which is an architectural style for designing networked applications.
+A RESTful API adheres to certain principles, including statelessness, uniform interface, and resource-based architecture.
+In the context of application, the RESTful API allows clients to communicate with the  server over HTTP.
+Requests are made using standard HTTP methods such as GET, POST, PUT and DELETE and responses are returned in JSON format.
+What are API Conventions?
  
 
 
